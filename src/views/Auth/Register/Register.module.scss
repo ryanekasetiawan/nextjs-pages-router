@@ -7,7 +7,11 @@
   width: 100vw;
   &__title {
     font-size: 32px;
-    margin_bottom: 20px;
+    margin_bottom: 10px;
+  }
+  &__error {
+    color: #fd3131;
+    margin-bottom: 10px;
   }
   &__form {
     width: 30%;

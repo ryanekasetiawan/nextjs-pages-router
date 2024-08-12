@@ -9,7 +9,7 @@ import {
   where,
 } from "firebase/firestore";
 import app from "./init";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 
 const firestore = getFirestore(app);
 
@@ -30,6 +30,24 @@ export async function retrieveDataById(collectionName: string, id: string) {
   return data;
 }
 
+export async function signIn(userData: { email: string }) {
+  const q = query(
+    collection(firestore, "user"),
+    where("email", "==", userData.email),
+  );
+
+  const snapshot = await getDocs(q);
+  const data = snapshot.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  }));
+  if (data) {
+    return data[0];
+  } else {
+    return null;
+  }
+}
+
 export async function signUp(
   userData: {
     email: string;
@@ -43,7 +61,9 @@ export async function signUp(
     collection(firestore, "user"),
     where("email", "==", userData.email),
   );
-  const snapshot = await getDocs(q); // Perbaiki getd jadi getDocs
+
+  const snapshot = await getDocs(q);
+
   const data = snapshot.docs.map((doc) => ({
     id: doc.id,
     ...doc.data(),

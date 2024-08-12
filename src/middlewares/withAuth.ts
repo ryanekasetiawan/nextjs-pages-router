@@ -1,13 +1,13 @@
 import { getToken } from "next-auth/jwt";
 import {
-  NextMiddleWare,
+  NextMiddleware,
   NextRequest,
   NextResponse,
   NextFetchEvent,
 } from "next/server";
 
 export default function withAuth(
-  middleware: NextMiddleWare,
+  middleware: NextMiddleware,
   requireAuth: string[] = [],
 ) {
   return async (req: NextRequest, next: NextFetchEvent) => {
