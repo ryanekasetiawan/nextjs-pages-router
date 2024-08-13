@@ -31,20 +31,40 @@ export async function retrieveDataById(collectionName: string, id: string) {
 }
 
 export async function signIn(userData: { email: string }) {
-  const q = query(
-    collection(firestore, "user"),
-    where("email", "==", userData.email),
-  );
+  // const q = query(
+  //   collection(firestore, "user"),
+  //   where("email", "==", userData.email),
+  // );
 
-  const snapshot = await getDocs(q);
-  const data = snapshot.docs.map((doc) => ({
-    id: doc.id,
-    ...doc.data(),
-  }));
-  if (data) {
-    return data[0];
+  // const snapshot = await getDocs(q);
+  // const data = snapshot.docs.map((doc) => ({
+  //   id: doc.id,
+  //   ...doc.data(),
+  // }));
+  // if (data) {
+  //   return data[0];
+  // } else {
+  //   return null;
+  // }
+
+  if (userData && userData.email) {
+    const q = query(
+      collection(firestore, "user"),
+      where("email", "==", userData.email)
+      // ...
+    );
+    const snapshot = await getDocs(q);
+    const data = snapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+    if (data) {
+      return data[0];
+    } else {
+      return null;
+    }
   } else {
-    return null;
+    console.error("Nilai userData.email tidak terdefinisi");
   }
 }
 
@@ -55,11 +75,11 @@ export async function signUp(
     password: string;
     role?: string;
   },
-  callback: Function,
+  callback: Function
 ) {
   const q = query(
     collection(firestore, "user"),
-    where("email", "==", userData.email),
+    where("email", "==", userData.email)
   );
 
   const snapshot = await getDocs(q);
