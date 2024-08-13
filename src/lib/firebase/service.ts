@@ -59,7 +59,7 @@ export async function signUp(
   callback: Function
 ) {
   const q = query(
-    collection(firestore, "user"),
+    collection(firestore, "member"),
     where("email", "==", userData.email)
   );
 
