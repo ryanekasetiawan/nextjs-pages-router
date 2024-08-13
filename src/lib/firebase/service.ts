@@ -31,7 +31,6 @@ export async function retrieveDataById(collectionName: string, id: string) {
 }
 
 export async function signIn(userData: { email: string }) {
-  console.log("Email yang diterima:", userData.email);
   const q = query(
     collection(firestore, "user"),
     where("email", "==", userData.email)
