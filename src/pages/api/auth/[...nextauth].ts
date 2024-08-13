@@ -55,7 +55,11 @@ const authOptions: NextAuthOptions = {
           image: user.image,
           type: "google",
         };
-        console.log(data);
+
+        token.email = data.email;
+        token.fullname = data.fullname;
+        token.type = data.type;
+        token.image = data.image;
       }
       return token;
     },
@@ -66,6 +70,9 @@ const authOptions: NextAuthOptions = {
       }
       if ("fullname" in token) {
         session.user.fullname = token.fullname;
+      }
+      if ("image" in token) {
+        session.user.image = token.image;
       }
       if ("role" in token) {
         session.user.role = token.role;
