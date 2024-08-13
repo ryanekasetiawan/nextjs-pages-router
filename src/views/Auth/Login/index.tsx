@@ -4,7 +4,7 @@ import Link from "next/link";
 import styles from "./Login.module.scss";
 import { useState } from "react";
 import { useRouter } from "next/router";
-import { signIn } from "@/lib/firebase/service";
+import { signIn } from "next-auth/react";
 
 const LoginView = () => {
   const [isLoading, setIsLoading] = useState(false);
