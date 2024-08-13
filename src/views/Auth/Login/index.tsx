@@ -17,6 +17,13 @@ const LoginView = () => {
     event.preventDefault();
     setError("");
     setIsLoading(true);
+
+    console.log("Event target:", event.target);
+
+    // Tambahkan log untuk memastikan email dan password diambil dengan benar
+    console.log("Email yang dimasukkan:", event.target.email.value);
+    console.log("Password yang dimasukkan:", event.target.password.value);
+
     try {
       const res = await signIn("credentials", {
         redirect: false,
@@ -25,6 +32,7 @@ const LoginView = () => {
         callbackUrl,
       });
 
+      console.log("Respons dari signIn:", res);
       if (!res?.error) {
         setIsLoading(false);
         push(callbackUrl);
@@ -35,8 +43,8 @@ const LoginView = () => {
     } catch (error: any) {
       setIsLoading(false);
       setError(error.message);
-      console.log(error);
-      console.log(error.message);
+
+      console.log("Error yang terjadi:", error);
     }
   };
   return (
