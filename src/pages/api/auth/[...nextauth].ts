@@ -25,6 +25,10 @@ const authOptions: NextAuthOptions = {
         const user: any = await signIn({ email });
         if (user) {
           const passwordConfirm = await compare(password, user.password);
+          console.log(user.email);
+          console.log("password : ", password);
+          console.log("database password : ", user.password);
+          console.log(passwordConfirm);
           if (passwordConfirm) {
             return user;
           }

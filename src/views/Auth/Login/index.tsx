@@ -35,6 +35,8 @@ const LoginView = () => {
     } catch (error: any) {
       setIsLoading(false);
       setError(error.message);
+      console.log(error);
+      console.log(error.message);
     }
   };
   return (
