@@ -40,7 +40,7 @@ const LoginView = () => {
   return (
     <div className={styles.login}>
       <h1 className={styles.login__title}>Login</h1>
-      {error && <p className={styles.register__error}>{error}</p>}
+      {error && <p className={styles.login__error}>{error}</p>}
       <div className={styles.login__form}>
         <form onSubmit={handleSubmit}>
           <div className={styles.login__form__item}>
