@@ -6,6 +6,8 @@ import {
   NextFetchEvent,
 } from "next/server";
 
+const onlyAdmin = ["/admin"];
+
 export default function withAuth(
   middleware: NextMiddleware,
   requireAuth: string[] = []
@@ -22,7 +24,10 @@ export default function withAuth(
         url.searchParams.set("callbackUrl", encodeURI(req.url));
         return NextResponse.redirect(url);
       }
-      return middleware(req, next);
+      if (token.role !== "admin" && onlyAdmin.includes(pathname)) {
+        return NextResponse.redirect(new URL("/", req.url));
+      }
     }
+    return middleware(req, next);
   };
 }
