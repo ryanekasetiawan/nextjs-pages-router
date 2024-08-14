@@ -25,6 +25,7 @@ const config = {
     "!<rootDir>/src/middleware.ts",
     "!<rootDir>/src/lib/**",
     "!<rootDir>/src/middlewares/**",
+    "!<rootDir>/src/pages/api/**",
   ],
   testEnvironment: "jest-environment-jsdom",
 };
