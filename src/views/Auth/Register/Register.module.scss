@@ -40,4 +40,27 @@
       color: #23bebe;
     }
   }
+
+  @media (max-width: 768px) {
+    &__form {
+      width: 90%;
+      padding: 20px 10px;
+      margin-bottom: 10px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    &__form {
+      width: 90%;
+      padding: 10px 5px;
+      margin-bottom: 5px;
+    }
+  }
+
+  @media (max-width: 768px) and (orientation: portrait) {
+    &__form {
+      width: 90%;
+      margin-bottom: 10px;
+    }
+  }
 }
