@@ -1,26 +1,74 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`About Page render about page 1`] = `
+exports[`Product Page render product page 1`] = `
 {
   "asFragment": [Function],
   "baseElement": <body>
     <div>
       <div>
-        <h1
-          id="title"
+        <div
+          class="product"
         >
-          About Page
-        </h1>
+          <h1
+            class="product__title"
+          >
+            Product
+          </h1>
+          <div
+            class="product__content"
+          >
+            <div
+              class="product__content__skeleton"
+            >
+              <div
+                class="product__content__skeleton__image"
+              />
+              <div
+                class="product__content__skeleton__name"
+              />
+              <div
+                class="product__content__skeleton__category"
+              />
+              <div
+                class="product__content__skeleton__price"
+              />
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </body>,
   "container": <div>
     <div>
-      <h1
-        id="title"
+      <div
+        class="product"
       >
-        About Page
-      </h1>
+        <h1
+          class="product__title"
+        >
+          Product
+        </h1>
+        <div
+          class="product__content"
+        >
+          <div
+            class="product__content__skeleton"
+          >
+            <div
+              class="product__content__skeleton__image"
+            />
+            <div
+              class="product__content__skeleton__name"
+            />
+            <div
+              class="product__content__skeleton__category"
+            />
+            <div
+              class="product__content__skeleton__price"
+            />
+          </div>
+        </div>
+      </div>
     </div>
   </div>,
   "debug": [Function],
