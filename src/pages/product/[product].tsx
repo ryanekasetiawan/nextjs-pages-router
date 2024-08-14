@@ -1,6 +1,6 @@
-import { fetcher } from "@/lib/swr/fetcher";
+// import { fetcher } from "@/lib/swr/fetcher";
 import { useRouter } from "next/router";
-import useSWR from "swr";
+// import useSWR from "swr";
 import DetailProduct from "@/views/DetailProduct";
 import { ProductType } from "@/types/product.type";
 

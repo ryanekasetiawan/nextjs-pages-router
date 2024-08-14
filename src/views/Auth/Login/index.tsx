@@ -1,10 +1,9 @@
-// @ts-nocheck
-
 import Link from "next/link";
 import styles from "./Login.module.scss";
 import { useState } from "react";
 import { useRouter } from "next/router";
 import { signIn } from "next-auth/react";
+import Head from "next/head";
 
 const LoginView = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -38,58 +37,63 @@ const LoginView = () => {
     }
   };
   return (
-    <div className={styles.login}>
-      <h1 className={styles.login__title}>Login</h1>
-      {error && <p className={styles.login__error}>{error}</p>}
-      <div className={styles.login__form}>
-        <form onSubmit={handleSubmit}>
-          <div className={styles.login__form__item}>
-            <label htmlFor="email" className={styles.login__form__item__label}>
-              Email
-            </label>
-            <input
-              type="email"
-              name="email"
-              id="email"
-              placeholder="email"
-              className={styles.login__form__item__input}
-            />
-          </div>
-          <div className={styles.login__form__item}>
-            <label
-              htmlFor="password"
-              className={styles.login__form__item__label}
+    <>
+      <Head>
+        <title>Login</title>
+      </Head>
+      <div className={styles.login}>
+        <h1 className={styles.login__title}>Login</h1>
+        {error && <p className={styles.login__error}>{error}</p>}
+        <div className={styles.login__form}>
+          <form onSubmit={handleSubmit}>
+            <div className={styles.login__form__item}>
+              <label htmlFor="email" className={styles.login__form__item__label}>
+                Email
+              </label>
+              <input
+                type="email"
+                name="email"
+                id="email"
+                placeholder="email"
+                className={styles.login__form__item__input}
+              />
+            </div>
+            <div className={styles.login__form__item}>
+              <label
+                htmlFor="password"
+                className={styles.login__form__item__label}
+              >
+                Password
+              </label>
+              <input
+                type="password"
+                name="password"
+                id="password"
+                placeholder="password"
+                className={styles.login__form__item__input}
+              />
+            </div>
+            <button
+              type="submit"
+              className={styles.login__form__item__button}
+              disabled={isLoading}
             >
-              Password
-            </label>
-            <input
-              type="password"
-              name="password"
-              id="password"
-              placeholder="password"
-              className={styles.login__form__item__input}
-            />
-          </div>
+              {isLoading ? "Loading..." : "Login"}
+            </button>
+          </form>
           <button
-            type="submit"
-            className={styles.login__form__item__button}
-            disabled={isLoading}
+            onClick={() => signIn("google", { callbackUrl, redirect: false })}
+            className={styles.login__form__item__google}
           >
-            {isLoading ? "Loading..." : "Login"}
+            Sign In With Google
           </button>
-        </form>
-        <button
-          onClick={() => signIn("google", { callbackUrl, redirect: false })}
-          className={styles.login__form__item__google}
-        >
-          Sign In With Google
-        </button>
+        </div>
+        <p className={styles.login__link}>
+          Don{"'"}t have an account? Sign up{" "}
+          <Link href="/auth/register">here</Link>
+        </p>
       </div>
-      <p className={styles.login__link}>
-        Don{"'"}t have an account? Sign up{" "}
-        <Link href="/auth/register">here</Link>
-      </p>
-    </div>
+    </>
   );
 };
 

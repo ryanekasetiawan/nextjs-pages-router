@@ -1,9 +1,13 @@
 import styles from "./DetailProduct.module.scss";
 import { ProductType } from "@/types/product.type";
+import Head from "next/head";
 
 const DetailProduct = ({ product }: { product: ProductType }) => {
   return (
     <>
+      <Head>
+        <title>{product.name}</title>
+      </Head>
       <h1 className={styles.title}>Detail Product</h1>
       <div className={styles.productDetail}>
         <div className={styles.productDetail__image}>
